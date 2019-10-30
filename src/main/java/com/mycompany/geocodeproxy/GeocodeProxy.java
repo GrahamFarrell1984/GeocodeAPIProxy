@@ -28,5 +28,14 @@ public class GeocodeProxy {
         Response response = client.target(URL).request().get();
         return response;
     }
+    
+    @GET
+    @Path("/xml")
+    public Response getGeocodeInfoInXmlFormat(@QueryParam("city") String city, @QueryParam("apiId") String apiId) {
+        String URL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&mode=xml&appid=" + apiId;
+        Client client = ClientBuilder.newClient();
+        Response response = client.target(URL).request().get();
+        return response;
+    }
 
 }
